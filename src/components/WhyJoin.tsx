@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Award, Zap, Heart } from 'lucide-react';
+import { CheckCircle2, Zap } from 'lucide-react';
 
 const WhyJoin = () => {
   const benefits = [
