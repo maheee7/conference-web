@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0f172a;
+  --color-primary-dark: #020617;
+  --color-primary-light: #f1f5f9;
+  --color-secondary: #f59e0b;
+  --color-secondary-dark: #d97706;
+  --color-accent: #3b82f6;
+  --color-text-main: #1e293b;
+  --color-text-muted: #64748b;
+  --color-bg-light: #f8fafc;
+  
+  --font-inter: "Inter", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", "Inter", sans-serif;
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-inter text-text-main bg-white leading-relaxed antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-jakarta;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 md:py-32;
+  }
+  
+  .container-custom {
+    @apply max-w-[1280px] mx-auto px-6 md:px-12;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-primary-dark/40 backdrop-blur-xl border border-white/10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-10 py-3.5 rounded-full font-bold transition-all duration-300 uppercase tracking-widest text-[13px] relative overflow-hidden;
+  }
+
+  .btn-primary {
+    @apply bg-secondary text-primary-dark hover:bg-white hover:-translate-y-1 hover:shadow-2xl shadow-secondary/20;
+  }
+
+  .btn-outline {
+    @apply border-2 border-white/30 text-white hover:bg-white hover:text-primary-dark hover:border-white;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-extrabold text-primary-dark mb-6 tracking-tight;
+  }
+
+  .section-underline {
+    @apply w-20 h-1.5 bg-secondary mx-auto mt-6 rounded-full;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.marquee-container {
+  overflow: hidden;
+  user-select: none;
+  display: flex;
+}
