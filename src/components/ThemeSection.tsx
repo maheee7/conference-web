@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Lightbulb, Link as LinkIcon, Users, Settings, Sparkles } from 'lucide-react';
 

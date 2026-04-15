@@ -35,7 +35,7 @@ const Highlights = () => {
               className="bg-white p-8 rounded-3xl border border-slate-100 hover:border-secondary transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200 group relative overflow-hidden"
             >
               <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-primary-dark mb-8 group-hover:bg-secondary group-hover:text-primary-dark transition-all duration-500 group-hover:rotate-6 shadow-sm">
-                {React.cloneElement(item.icon as React.ReactElement, { size: 28 })}
+                {React.cloneElement(item.icon as React.ReactElement<{ size?: number }>, { size: 28 })}
               </div>
               <h3 className="text-xl font-extrabold text-primary-dark mb-4 leading-tight group-hover:text-secondary group-hover:-translate-y-1 transition-all duration-300">{item.title}</h3>
               <p className="text-text-muted text-sm leading-relaxed font-medium">{item.desc}</p>

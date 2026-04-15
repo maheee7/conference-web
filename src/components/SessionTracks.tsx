@@ -38,7 +38,7 @@ const SessionTracks = () => {
               
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-primary-dark text-white rounded-2xl flex items-center justify-center mb-8 group-hover:bg-secondary group-hover:text-primary-dark transition-all duration-500 group-hover:rotate-6 shadow-xl shadow-primary-dark/10">
-                  {React.cloneElement(track.icon as React.ReactElement, { size: 28 })}
+                  {React.cloneElement(track.icon as React.ReactElement<{ size?: number }>, { size: 28 })}
                 </div>
                 <span className="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-3 block">Track {track.id.toString().padStart(2, '0')}</span>
                 <h3 className="text-2xl font-black text-primary-dark leading-tight group-hover:text-secondary group-hover:-translate-y-1 transition-all duration-300">
