@@ -1,53 +1,75 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Clock, CheckCircle2 } from 'lucide-react';
+import { Clock, CheckCircle2, Calendar } from 'lucide-react';
 
 const ImportantDates = () => {
   const dates = [
-    { label: "Early Bird Registration", date: "31 Dec 2025", icon: <Clock /> },
-    { label: "Abstract Submission", date: "31 Jan 2026", icon: <Clock /> },
-    { label: "Full Paper Submission", date: "28 Feb 2026", icon: <Clock /> },
-    { label: "Final Registration", date: "31 Mar 2026", icon: <CheckCircle2 /> },
+    { label: "Early Bird Registration", date: "31 Dec 2025", type: 'warning' },
+    { label: "Abstract Submission", date: "31 Jan 2026", type: 'primary' },
+    { label: "Full Paper Submission", date: "28 Feb 2026", type: 'primary' },
+    { label: "Final Registration", date: "31 Mar 2026", type: 'success' },
   ];
 
   return (
-    <section id="dates" className="section-padding bg-bg-light relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+    <section id="dates" className="section-padding bg-slate-50 relative overflow-hidden">
+      <div className="container-custom relative z-10">
+        <div className="text-center mb-20">
+          <span className="text-secondary font-bold text-sm uppercase tracking-[0.3em] mb-4 block">Timeline</span>
           <h2 className="section-title">Important Deadlines</h2>
           <div className="section-underline"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="relative border-l-2 border-primary/30 ml-4 md:ml-0 md:border-l-0 md:flex md:justify-between">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-4">
             {dates.map((item, index) => (
-              <motion.div
+              <motion.div 
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="relative mb-8 md:mb-0 md:w-1/4 px-6 text-center md:flex md:flex-col md:items-center"
+                className="group relative"
               >
-                {/* Connector for Mobile */}
-                <div className="absolute -left-[33px] md:static w-8 h-8 rounded-full bg-white border-4 border-primary flex items-center justify-center text-primary z-10 md:mb-6 shadow-md">
-                  {React.cloneElement(item.icon as React.ReactElement, { size: 14 })}
+                <div className="h-full p-8 bg-white rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col items-center text-center">
+                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 shadow-lg rotate-3 group-hover:rotate-12 transition-transform duration-500 ${
+                    index === 0 ? 'bg-amber-100 text-amber-600' : 
+                    index === 3 ? 'bg-emerald-100 text-emerald-600' : 'bg-primary-light text-primary'
+                  }`}>
+                    {index === 3 ? <CheckCircle2 size={24} /> : <Calendar size={24} />}
+                  </div>
+                  
+                  <h4 className="text-primary-dark font-black text-sm uppercase tracking-widest mb-4 leading-tight min-h-[40px]">
+                    {item.label}
+                  </h4>
+                  
+                  <div className={`mt-auto py-2 px-5 rounded-full text-xs font-black tracking-[0.1em] border ${
+                    index === 0 ? 'bg-amber-50 border-amber-200 text-amber-700' : 
+                    index === 3 ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'bg-primary-light border-primary-dark/5 text-primary-dark'
+                  }`}>
+                    {item.date}
+                  </div>
                 </div>
-
-                <h4 className="text-primary-dark font-bold text-lg mb-2">{item.label}</h4>
-                <div className="bg-primary text-white py-1 px-4 rounded-full text-sm font-mono inline-block">
-                  {item.date}
-                </div>
-
-                {/* Desktop Connector Line */}
+                
                 {index < dates.length - 1 && (
-                  <div className="hidden md:block absolute top-4 left-[60%] w-[80%] h-[2px] bg-primary/30 -z-10"></div>
+                  <div className="hidden md:block absolute top-1/2 -right-4 translate-x-1/2 -translate-y-1/2 z-10">
+                    <div className="w-8 h-[2px] bg-slate-200"></div>
+                  </div>
                 )}
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-20 p-8 glass-dark bg-primary-dark rounded-3xl flex flex-col md:flex-row items-center justify-between gap-8 border border-white/5 shadow-2xl">
+             <div className="flex items-center gap-5">
+                <div className="w-14 h-14 bg-secondary text-primary-dark rounded-2xl flex items-center justify-center animate-pulse">
+                   <Clock size={28} />
+                </div>
+                <div>
+                   <h5 className="text-white font-bold text-lg">Don't Miss Out!</h5>
+                   <p className="text-white/50 text-sm italic">All deadlines are strictly followed by UTC+7 time zone.</p>
+                </div>
+             </div>
+             <button className="btn btn-primary px-8 py-3">Add to Calendar</button>
           </div>
         </div>
       </div>

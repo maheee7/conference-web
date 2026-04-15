@@ -4,40 +4,43 @@ import { Globe, BookOpen, Mic2, Users, MessageSquare, Award, GraduationCap, Laye
 
 const Highlights = () => {
   const highlights = [
-    { icon: <Layers />, title: "Multidisciplinary Platform", desc: "A unique forum uniting applied science, engineering, business, and humanities." },
-    { icon: <Globe />, title: "Global Participation", desc: "Engage with renowned scholars and industry leaders from across the world." },
-    { icon: <BookOpen />, title: "Call for Papers & Publications", desc: "Opportunities to publish in reputed Scopus indexed journals." },
-    { icon: <Mic2 />, title: "Expert Keynote Sessions", desc: "Insights from distinguished speakers on cutting-edge research." },
-    { icon: <MessageSquare />, title: "Interactive Workshops", desc: "Hands-on learning and thought-provoking debates on contemporary issues." },
-    { icon: <Users />, title: "Networking Opportunities", desc: "Build academic, industrial and international collaborations." },
-    { icon: <Award />, title: "Recognition & Awards", desc: "Best paper and presentation awards for outstanding contributions." },
-    { icon: <GraduationCap />, title: "Student Engagement", desc: "Special sessions to inspire and guide the next generation of scholars." },
+    { icon: <Layers />, title: "Multidisciplinary", desc: "A forum uniting science, engineering, business, and humanities." },
+    { icon: <Globe />, title: "Global Reach", desc: "Engage with renowned scholars and leaders from across the world." },
+    { icon: <BookOpen />, title: "Indexed Papers", desc: "Opportunities to publish in reputed Scopus indexed journals." },
+    { icon: <Mic2 />, title: "Expert Keynotes", desc: "Insights from distinguished speakers on cutting-edge research." },
+    { icon: <MessageSquare />, title: "Workshops", desc: "Hands-on learning and debates on contemporary issues." },
+    { icon: <Users />, title: "Networking", desc: "Build academic, industrial and international collaborations." },
+    { icon: <Award />, title: "Recognition", desc: "Best paper and presentation awards for outstanding contributions." },
+    { icon: <GraduationCap />, title: "Scholars", desc: "Special sessions to guide the next generation of researchers." },
   ];
 
   return (
-    <section id="highlights" className="section-padding bg-bg-light">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="section-title">Key Highlights of ICAEBMS</h2>
+    <section id="highlights" className="section-padding bg-white relative">
+      <div className="container-custom">
+        <div className="text-center mb-20">
+          <span className="text-secondary font-bold text-sm uppercase tracking-[0.3em] mb-4 block">Key Features</span>
+          <h2 className="section-title">Conference Highlights</h2>
           <div className="section-underline"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((item, index) => (
             <motion.div 
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-white p-8 rounded-2xl shadow-lg border-b-4 border-primary hover:border-secondary transition-all group"
+              transition={{ delay: index * 0.05 }}
+              whileHover={{ y: -8 }}
+              className="bg-white p-8 rounded-3xl border border-slate-100 hover:border-secondary transition-all duration-500 hover:shadow-2xl hover:shadow-slate-200 group relative overflow-hidden"
             >
-              <div className="w-14 h-14 bg-primary-light rounded-xl flex items-center justify-center text-primary mb-6 group-hover:bg-secondary group-hover:text-primary-dark transition-colors">
+              <div className="w-16 h-16 bg-slate-50 rounded-2xl flex items-center justify-center text-primary-dark mb-8 group-hover:bg-secondary group-hover:text-primary-dark transition-all duration-500 group-hover:rotate-6 shadow-sm">
                 {React.cloneElement(item.icon as React.ReactElement, { size: 28 })}
               </div>
-              <h3 className="text-xl font-bold text-primary-dark mb-3">{item.title}</h3>
-              <p className="text-text-muted text-sm leading-relaxed">{item.desc}</p>
+              <h3 className="text-xl font-extrabold text-primary-dark mb-4 leading-tight group-hover:text-secondary group-hover:-translate-y-1 transition-all duration-300">{item.title}</h3>
+              <p className="text-text-muted text-sm leading-relaxed font-medium">{item.desc}</p>
+              
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-transparent translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-700"></div>
             </motion.div>
           ))}
         </div>
